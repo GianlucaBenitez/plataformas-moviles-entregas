@@ -68,7 +68,7 @@ a:visited{
 }
 
 /* 15) Mostrar los links sin atributo href en cursiva */
-a[href]{
+a:not([href]){
     font-style: italic;
 }
 
