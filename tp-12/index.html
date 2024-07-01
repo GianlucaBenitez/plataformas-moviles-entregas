@@ -39,11 +39,13 @@
          * esta función se va a llamar cuando el usuario envía el formulario con el nombre del producto para agregar.
          */
         function agregarProducto(nombreProducto) {
+            nombreProducto = nombreProducto.trim();
+
             let lista = document.querySelector("#lista-productos");
             let elementos = Array.from(lista.querySelectorAll("li"));
             let yaExiste = elementos.some(elemento => elemento.innerText === nombreProducto);
             
-            if(nombreProducto.trim() !== "" && !yaExiste){
+            if(nombreProducto !== "" && !yaExiste){
                 let elemento = document.createElement("li");
                 elemento.innerText = nombreProducto;
                 lista.append(elemento);
@@ -65,6 +67,8 @@
          * esta función se va a llamar cuando el usuario aprieta el boton "Buscar y Borrar" y borrara el li que coincida.
          */
         function buscarYBorrar(nombreProducto) {
+            nombreProducto = nombreProducto.trim();
+
             let lista = document.querySelector("#lista-productos");
             let elementos = lista.querySelectorAll("li");
             elementos.forEach(elemento => {
@@ -84,7 +88,7 @@
 
             elementos.sort((a, b) => a.innerText.localeCompare(b.innerText));
 
-            lista.innerHTML = "";
+            limpiarLista();
             elementos.forEach(elemento => lista.appendChild(elemento));
         }
 
